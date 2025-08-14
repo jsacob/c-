@@ -6,22 +6,14 @@
 class Solution {
 public:
     bool isAnagram(std::string s, std::string t) {
-		if (s.size() != t.size()) return false;
-		
-		int count[26] = {0};
+		std::sort(s.begin(), s.end());
+		std::sort(t.begin(),  t.end());
 
-		for(char c : s){
-			count[c - 'a']++;
+		if(s == t) {
+			return 1;
 		}
-		for(char c : t){
-			count[c - 'a']--;
-		}
-
-		for(int i = 0; i < 26; i++){
-			if(count[i] != 0) return false;
-		}
-		return true;
-    }
+		return 0;
+	}
 };
 
 int main() {
